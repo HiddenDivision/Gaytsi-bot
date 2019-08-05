@@ -1,0 +1,2 @@
+# Gaytsi-bot
+bot
