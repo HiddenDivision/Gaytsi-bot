@@ -1,7 +1,7 @@
 const {Client, Attachment, RichEmbed, Guild, GuildMember, MessageMentions, Role} = require('discord.js');
 const bot = new Client();
 const superagent = require('superagent');
-
+let state = '0'
 const PREFIX = '​';
 const testpre = '-';
 
