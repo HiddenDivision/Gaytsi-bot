@@ -12,8 +12,6 @@ bot.on('ready', () =>{
 
 
 bot.on('guildMemberAdd', member =>{
-	if(member.id === '')
-	if(member.guild.memberCount === 200)
 	const channel = member.guild.channels.find(channel => channel.name === "welcome");
 	if(!channel) return;
 	let role = member.guild.roles.find("name", "Neppy");
@@ -22,7 +20,6 @@ bot.on('guildMemberAdd', member =>{
 })
 
 bot.on('guildMemberRemove', member =>{
-
 	const channel = member.guild.channels.find(channel => channel.name === "welcome");
 	if(!channel) return;
 	channel.sendMessage(`${member} was too gay. Go play Fortnite.`)
