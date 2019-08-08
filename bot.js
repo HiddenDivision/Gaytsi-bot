@@ -37,7 +37,7 @@ bot.on('message', msg=>{
 		});
 		if(state === '0'){
 			state = '1'
-			message.channel.send(`${msg.author.toString()}, you are gay and need some help!`);
+			msg.channel.send(`${msg.author.toString()}, you are gay and need some help!`);
 		}
 		else{
 			return
