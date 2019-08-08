@@ -6,66 +6,101 @@ const PREFIX = '​';
 const testpre = '-';
 
 bot.on('ready', () =>{
-	console.log('Hidden division is now hidden.');
-	bot.user.setActivity('you having a trip.', { type: ('WATCHING')})
-	var Channel = bot.channels.get("601880042653483018");
-	Channel.fetchMessage("601884630270083092");
+	console.log('Online.');
+	bot.user.setActivity('you, baka.', { type: ('WATCHING')})
 })
 
-bot.on('raw', event =>{
-	const eventname = event.t
-	if(eventname === 'MESSAGE_REACTION_ADD')
-	{
-		var reactionChannel = bot.channels.get(event.d.channel_id);
-		if(event.d.message_id === '601884630270083092')
-		{
-			reactionChannel.fetchMessage(event.d.message_id)
-			.then(msg => {
-			var msgReaction = msg.reactions.get(event.d.emoji.name + ":" + event.d.emoji.id);
-			var user = bot.users.get(event.d.user_id)
-			})
-			.catch(err => console.log(err))
-		}
-		else {
-			reactionChannel.fetchMessage(event.d.message_id)
-			.then(msg => {
-			var msgReaction = msg.reactions.get(event.d.emoji.name + ":" + event.d.emoji.id);
-			var user = bot.users.get(event.d.user_id)
-			})
-			.catch(err => console.log(err))
-		}
-	}
-});
-
-bot.on('messageReactionAdd', (messageReaction, user) =>{
-	var roleName = messageReaction.emoji.name
-	var role = messageReaction.message.guild.roles.find("name", "Unverified");
-	console.log(roleName)
-	var member = messageReaction.message.guild.members.find(member => member.id === user.id);
-	if(member)
-	{
-		if(roleName === 'Verified'){
-			member.removeRole(role.id)
-			console.log("Success.")
-		}
-	}
-})
 
 bot.on('guildMemberAdd', member =>{
-
-	const channel = member.guild.channels.find(channel => channel.name === "welcome");
+	if(member.id === '')
+	if(member.guild.memberCount === 200)
+	const channel = member.guild.channels.find(channel => channel.id === "welcome");
 	if(!channel) return;
-	let role = member.guild.roles.find("name", "Unverified");
+	let role = member.guild.roles.find("name", "Neppy");
 	member.addRole(role.id);
-	channel.sendMessage(`Welcome in Trip Gang! Have a nice trip, ${member}.`);
+	channel.sendMessage(`Welcome in HΞNTSI's Extravaganza Server, ${member}.`);
 })
 
 bot.on('guildMemberRemove', member =>{
 
-	const channel = member.guild.channels.find(channel => channel.name === "welcome");
+	const channel = member.guild.channels.find(channel => channel.id === "welcome");
 	if(!channel) return;
-	channel.sendMessage(`Your trip is over, ${member}.`)
+	channel.sendMessage(`${member} was too gay. Go play Fortnite.`)
 })
+
+bot.on('message', (message) => {
+	
+    if (message.author.bot) return;
+    if (message.content.toLowerCase().includes('fortnite')) {
+		function sleep (time) {
+			return new Promise((resolve) => setTimeout(resolve, time));
+		}
+		sleep(3000).then(() => {
+			state = '0'
+		});
+		if(state === '0'){
+			state = '1'
+			message.channel.send(`${message.author.toString()}, you are gay and need some help!`);
+		}
+		else{
+			return
+		}
+	}
+	if (message.content.toLowerCase().includes('owo')) {
+		if (message.content.toLowerCase().includes('fortnite')) return;
+		if (message.content.toLowerCase().includes('uwu')) return;
+		if (message.content.toLowerCase().includes('gay')) return;
+        function sleep (time) {
+			return new Promise((resolve) => setTimeout(resolve, time));
+		}
+		sleep(3000).then(() => {
+			state = '0'
+		});
+		if(state === '0'){
+			state = '1'
+			message.channel.send(`${message.author.toString()}, Blabla`);
+		}
+		else{
+			return
+		}
+	}
+	if (message.content.toLowerCase().includes('uwu')) {
+		if (message.content.toLowerCase().includes('fortnite')) return;
+		if (message.content.toLowerCase().includes('owo')) return;
+		if (message.content.toLowerCase().includes('gay')) return;
+        function sleep (time) {
+			return new Promise((resolve) => setTimeout(resolve, time));
+		}
+		sleep(3000).then(() => {
+			state = '0'
+		});
+		if(state === '0'){
+			state = '1'
+			message.channel.send(`${message.author.toString()}, Blabla`);
+		}
+		else{
+			return
+		}
+	}
+	if (message.content.toLowerCase().includes('gay')) {
+		if (message.content.toLowerCase().includes('fortnite')) return;
+		if (message.content.toLowerCase().includes('uwu')) return;
+		if (message.content.toLowerCase().includes('owo')) return;
+        function sleep (time) {
+			return new Promise((resolve) => setTimeout(resolve, time));
+		}
+		sleep(3000).then(() => {
+			state = '0'
+		});
+		if(state === '0'){
+			state = '1'
+			message.channel.send(`${message.author.toString()}, Blabla`);
+		}
+		else{
+			return
+		}
+	}
+});
 
 bot.on('message', msg=>{
 	if(msg.content === "-meme"){
@@ -127,33 +162,22 @@ bot.on('message', msg=>{
 	switch(args[0]){
 		case '-purge':
 			const command = args.join(" ");
+			if(command.includes('-')) return;
 			if(!msg.member.hasPermission("MANAGE_MESSAGES")) return msg.channel.sendMessage("You don't have the permission to purge messages!");
 			if(!msg.guild.me.hasPermission("MANAGE_MESSAGES")) return msg.channel.sendMessage("I don't have the allowed permission to purge messages!");
 			if(!args[1]) return msg.channel.sendMessage('Please specify a number of messages to be purged!');
 			msg.channel.bulkDelete(args[1]);
-		break;
-		case '-iregards':
-			mention = msg.mentions.users.first();
-			if(!msg.member.roles.find(r => r.name === "Leader")) return msg.channel.sendMessage("You are not the leader. You can't do that.");
-			if(!msg.author.id === '333357946744602647') return msg.channel.sendMessage("You are not the leader. You can't do that.");
-			if(!args[1]) return msg.channel.sendMessage('Who are you trying to send your regards?')
-			const regard = new Attachment('https://media.discordapp.net/attachments/572096391149649920/572508265506668556/Hidden_Division.gif')
-			mention.sendMessage('Ɦıᴅᴅᴇɴ Ðıᴠısıᴏɴ send their regards.');
-			mention.sendMessage(regard);
-			msg.channel.bulkDelete(1);
 		break;
 		case '-announcement':
 			if(!args[1]) return msg.channel.sendMessage('What are you trying to announce?')
 			if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("You don't have the permission to make an announcement!");
 			if(!msg.guild.me.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("I don't have the allowed permission to make an announcement!");
 			const aMessage = args.join(" ").slice(14);
-			const achannel = bot.channels.find(channel => channel.name === "announcements");
+			const achannel = bot.channels.find(channel => channel.id === "522806007802363914");
 			const aAuthor = msg.author.username
-			const agif = new Attachment('https://media.discordapp.net/attachments/572096391149649920/572508265506668556/Hidden_Division.gif');
 			if(!achannel) return;
 			msg.channel.bulkDelete(1);
 			achannel.sendMessage('@everyone \n \n' + aMessage + '\n \n' + 'Announcement made by ' + aAuthor + '.')
-			//achannel.sendMessage(agif)
 		break;
 		case '-kick':
 			if(!args[1]) return msg.channel.sendMessage('Please specify a user!')
