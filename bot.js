@@ -44,7 +44,6 @@ bot.on('message', msg=>{
 		}
 	}
 	if (msg.content.toLowerCase().includes('owo')) {
-		if (msg.content.toLowerCase().includes('-owo')) return;
 		if (msg.content.toLowerCase().includes('fortnite')) return;
 		if (msg.content.toLowerCase().includes('uwu')) return;
 		if (msg.content.toLowerCase().includes('gay')) return;
@@ -56,7 +55,11 @@ bot.on('message', msg=>{
 		});
 		if(state === '0'){
 			state = '1'
+			if (msg.content.toLowerCase().includes('-owo')) {
+			}
+			else{
 			msg.channel.send(`${msg.author.toString()}, Blabla`);
+			}
 		}
 		else{
 			return
