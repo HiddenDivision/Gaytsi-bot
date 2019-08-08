@@ -25,10 +25,10 @@ bot.on('guildMemberRemove', member =>{
 	channel.sendMessage(`${member} was too gay. Go play Fortnite.`)
 })
 
-bot.on('message', (message) => {
-	
-    if (message.author.bot) return;
-    if (message.content.toLowerCase().includes('fortnite')) {
+bot.on('message', msg=>{
+
+    if (msg.author.bot) return;
+    if (msg.content.toLowerCase().includes('fortnite')) {
 		function sleep (time) {
 			return new Promise((resolve) => setTimeout(resolve, time));
 		}
@@ -37,16 +37,16 @@ bot.on('message', (message) => {
 		});
 		if(state === '0'){
 			state = '1'
-			message.channel.send(`${message.author.toString()}, you are gay and need some help!`);
+			message.channel.send(`${msg.author.toString()}, you are gay and need some help!`);
 		}
 		else{
 			return
 		}
 	}
-	if (message.content.toLowerCase().includes('owo')) {
-		if (message.content.toLowerCase().includes('fortnite')) return;
-		if (message.content.toLowerCase().includes('uwu')) return;
-		if (message.content.toLowerCase().includes('gay')) return;
+	if (msg.content.toLowerCase().includes('owo')) {
+		if (msg.content.toLowerCase().includes('fortnite')) return;
+		if (msg.content.toLowerCase().includes('uwu')) return;
+		if (msg.content.toLowerCase().includes('gay')) return;
         function sleep (time) {
 			return new Promise((resolve) => setTimeout(resolve, time));
 		}
@@ -55,16 +55,16 @@ bot.on('message', (message) => {
 		});
 		if(state === '0'){
 			state = '1'
-			message.channel.send(`${message.author.toString()}, Blabla`);
+			msg.channel.send(`${msg.author.toString()}, Blabla`);
 		}
 		else{
 			return
 		}
 	}
-	if (message.content.toLowerCase().includes('uwu')) {
-		if (message.content.toLowerCase().includes('fortnite')) return;
-		if (message.content.toLowerCase().includes('owo')) return;
-		if (message.content.toLowerCase().includes('gay')) return;
+	if (msg.content.toLowerCase().includes('uwu')) {
+		if (msg.content.toLowerCase().includes('fortnite')) return;
+		if (msg.content.toLowerCase().includes('owo')) return;
+		if (msg.content.toLowerCase().includes('gay')) return;
         function sleep (time) {
 			return new Promise((resolve) => setTimeout(resolve, time));
 		}
@@ -73,16 +73,16 @@ bot.on('message', (message) => {
 		});
 		if(state === '0'){
 			state = '1'
-			message.channel.send(`${message.author.toString()}, Blabla`);
+			msg.channel.send(`${msg.author.toString()}, Blabla`);
 		}
 		else{
 			return
 		}
 	}
-	if (message.content.toLowerCase().includes('gay')) {
-		if (message.content.toLowerCase().includes('fortnite')) return;
-		if (message.content.toLowerCase().includes('uwu')) return;
-		if (message.content.toLowerCase().includes('owo')) return;
+	if (msg.content.toLowerCase().includes('gay')) {
+		if (msg.content.toLowerCase().includes('fortnite')) return;
+		if (msg.content.toLowerCase().includes('uwu')) return;
+		if (msg.content.toLowerCase().includes('owo')) return;
         function sleep (time) {
 			return new Promise((resolve) => setTimeout(resolve, time));
 		}
@@ -91,15 +91,13 @@ bot.on('message', (message) => {
 		});
 		if(state === '0'){
 			state = '1'
-			message.channel.send(`${message.author.toString()}, Blabla`);
+			msg.channel.send(`${msg.author.toString()}, Blabla`);
 		}
 		else{
 			return
 		}
 	}
-});
 
-bot.on('message', msg=>{
 	if(msg.content === "-meme"){
 		const randomPuppy = require('random-puppy');
 		const snekfetch = require('snekfetch');
@@ -170,7 +168,7 @@ bot.on('message', msg=>{
 			if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("You don't have the permission to make an announcement!");
 			if(!msg.guild.me.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("I don't have the allowed permission to make an announcement!");
 			const aMessage = args.join(" ").slice(14);
-			const achannel = bot.channels.find(channel => channel.id === "522806007802363914");
+			const achannel = bot.channels.find(channel => channel.id === "609122059083317269");
 			const aAuthor = msg.author.username
 			if(!achannel) return;
 			msg.channel.bulkDelete(1);
