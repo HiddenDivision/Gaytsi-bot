@@ -44,6 +44,7 @@ bot.on('message', msg=>{
 		}
 	}
 	if (msg.content.toLowerCase().includes('owo')) {
+		if (msg.content.toLowerCase().includes('-owo')) return;
 		if (msg.content.toLowerCase().includes('fortnite')) return;
 		if (msg.content.toLowerCase().includes('uwu')) return;
 		if (msg.content.toLowerCase().includes('gay')) return;
